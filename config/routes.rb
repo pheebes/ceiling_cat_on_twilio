@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
   post 'send_texts/send_text_message' => 'send_texts#send_text_message'
   get 'receive_texts/index' => 'receive_texts#index'
+  get 'receive_texts/respond' => 'receive_texts#respond'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

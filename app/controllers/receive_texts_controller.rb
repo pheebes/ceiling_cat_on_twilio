@@ -11,8 +11,15 @@ class ReceiveTextsController < ApplicationController
 
     @client.messages.list.each do |message|
       puts message.body
-      puts message.body
-      puts message.body
     end
   end
+
+  def respond
+    name = 'Temporary'
+    twiml = Twilio::TwiML::Response.new do |r|
+      r.Message "Hello, #{name}.  Thanks for messing us."
+    end
+    twiml.text
+  end
+
 end
