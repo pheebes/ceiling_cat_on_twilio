@@ -1,0 +1,6 @@
+<% @client.messages.list.each do |message| %>
+  <span>To: </span><%= message.to %><br>
+  <span>From: </span><%= message.from %><br>
+  <span>Message</span><%= message.body %><br>
+  <br>
+<% end %>
