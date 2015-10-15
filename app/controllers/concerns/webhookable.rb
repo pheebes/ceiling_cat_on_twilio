@@ -6,7 +6,7 @@ extend ActiveSupport::Concern
   end
 
   def render_twiml(response)
-    render text: response.text
+    render text: response
   end
 
 end
