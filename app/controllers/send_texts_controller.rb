@@ -16,7 +16,7 @@ class SendTextsController < ApplicationController
 
     @client.account.messages.create({
       :from => "+1#{twilio_phone_number}",
-      :to => "+",
+      :to => "",
       :body => "Testing...222"
     })
 
