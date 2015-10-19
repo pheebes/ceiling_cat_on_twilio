@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :stores do
+    resources :users
+  end
+  
   post 'send_texts/send_text_message' => 'send_texts#send_text_message'
   get 'receive_texts/index' => 'receive_texts#index'
   get 'receive_texts/respond' => 'receive_texts#respond'

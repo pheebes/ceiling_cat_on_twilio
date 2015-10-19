@@ -11,16 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019163624) do
+ActiveRecord::Schema.define(version: 20151019184839) do
+
+  create_table "stores", force: :cascade do |t|
+    t.string   "store_name"
+    t.string   "store_phone"
+    t.string   "store_zip"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
-    t.string   "store_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "user_id"
+    t.integer  "store_id"
   end
+
+  add_index "users", ["store_id"], name: "index_users_on_store_id"
 
 end
