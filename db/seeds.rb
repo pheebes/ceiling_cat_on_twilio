@@ -14,6 +14,6 @@ users_list = [
   ["Happy", "Name", "1234560000", "00005"]
 ]
 
-users_list.each do |first_name, last_name, phone_number, store_id|
-  User.create(first_name: first_name, last_name: last_name, phone_number: phone_number, store_id: store_id)
+users_list.each do |first_name, last_name, phone_number, user_id|
+  User.create(first_name: first_name, last_name: last_name, phone_number: phone_number, user_id: user_id)
 end
