@@ -1,6 +1,13 @@
 <Response>
+  <% @user = "not_found" %>
+  <% @store = "not_here" %>
   <% @users.each do |user| %>
-    <% @first_name = user.first_name if @body.include?(user.user_id) %>
+    <% @user = user if @body.include?(user.user_id) %>
   <% end %>
-  <Message>Hi <%= @first_name %> thanks for texting us from <%= @zip %>.</Message>
+  <% if @user == "not_found" %>
+    <Message>Please send your user id with the text.  Thanks!</Message>
+  <% else %>
+    <Message>Hi <%= @user.first_name %> thanks for texting us from <%= @zip %>. Please following the following link: <%= "https://ec8b440c.ngrok.io/stores/#{@user.store_id}/users/#{@user.id}" %>
+    link: <%= link_to 'click_here', store_user_path(@user, @user.store_id)%> </Message>
+  <% end %>
 </Response>
