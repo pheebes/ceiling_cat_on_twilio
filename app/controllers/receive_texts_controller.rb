@@ -4,8 +4,8 @@ class ReceiveTextsController < ApplicationController
   def index
 
   #need to add next two lines to config file
-  account_sid = ''
-  auth_token = ''
+  account_sid = ENV['TWILIO_SID']
+  auth_token = ENV['TWILIO_TOKEN']
 
     @client = Twilio::REST::Client.new account_sid, auth_token
 

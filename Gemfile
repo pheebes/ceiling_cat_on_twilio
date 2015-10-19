@@ -43,4 +43,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Set up secret ENV variables that the world should not have access to
+  gem 'dotenv-rails'
 end
