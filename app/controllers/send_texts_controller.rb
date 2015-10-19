@@ -6,19 +6,14 @@ class SendTextsController < ApplicationController
   end
 
   def send_text_message
-
-    #move next four lines to config file
-    account_sid = ENV['TWILIO_SID']
-    auth_token = ENV['TWILIO_TOKEN']
     twilio_phone_number = ENV['TWILIO_NUMBER']
     testing_phone_number = ENV['TEST_REAL_NUMBER']
-    @client = Twilio::REST::Client.new account_sid, auth_token
 
+    @client = Twilio::REST::Client.new
     @client.account.messages.create({
       :from => "+1#{twilio_phone_number}",
       :to => "+1#{testing_phone_number}",
-      :body => "Testing...222"
+      :body => "This is a test text message. 123 Test."
     })
-
   end
 end
