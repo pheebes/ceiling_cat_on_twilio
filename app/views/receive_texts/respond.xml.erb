@@ -1,3 +1,6 @@
 <Response>
-  <Message>Hey there person from <%= @zip %> thanks for texting us</Message>
+  <% @users.each do |user| %>
+    <% @first_name = user.first_name if @body.include?(user.store_id) %>
+  <% end %>
+  <Message>Hi <%= @first_name %> thanks for texting us from <%= @zip %>.</Message>
 </Response>

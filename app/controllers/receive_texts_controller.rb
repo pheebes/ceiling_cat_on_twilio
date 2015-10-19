@@ -10,7 +10,9 @@ class ReceiveTextsController < ApplicationController
   end
 
   def respond
+    @users = User.all
     @zip = params[:FromZip]
+    @body = params[:Body]
     twiml = Twilio::TwiML::Response.new do |r|
       r.Message "Hello, thanks for messing us."
     end
