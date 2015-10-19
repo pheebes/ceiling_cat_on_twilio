@@ -1,13 +1,18 @@
 <Response>
-  <% @user = "not_found" %>
-  <% @store = "not_here" %>
-  <% @users.each do |user| %>
-    <% @user = user if @body.include?(user.user_id) %>
-  <% end %>
-  <% if @user == "not_found" %>
-    <Message>Please send your user id with the text.  Thanks!</Message>
+  <% if @body.downcase.include?('help me')%>
+    <Message>Please dial 911</Message>
+  <% elsif @body.downcase.include?('abracadabra') %>
+    <Message>You found the magic word!</Message>
   <% else %>
-    <Message>Hi <%= @user.first_name %> thanks for texting us from <%= @zip %>. Please following the following link: <%= "https://ec8b440c.ngrok.io/stores/#{@user.store_id}/users/#{@user.id}" %>
-    link: <%= link_to 'click_here', store_user_path(@user, @user.store_id)%> </Message>
+    <% @user = "not_found" %>
+    <% @store = "not_here" %>
+    <% @users.each do |user| %>
+      <% @user = user if @body.include?(user.user_id) %>
+    <% end %>
+    <% if @user == "not_found" %>
+      <Message>Please send your user id with the text.  Thanks!</Message>
+    <% else %>
+      <Message>Hi <%= @user.first_name %> thanks for texting us from <%= @zip %>. Please following the following link: <%= "https://ec8b440c.ngrok.io/stores/#{@user.store_id}/users/#{@user.id}" %> link: <%= link_to 'click_here', store_user_path(@user.id, @user.store_id)%> </Message>
+    <% end %>
   <% end %>
 </Response>
