@@ -13,9 +13,6 @@ class ReceiveTextsController < ApplicationController
     @users = User.all
     @zip = params[:FromZip]
     @body = params[:Body]
-    twiml = Twilio::TwiML::Response.new do |r|
-      r.Message "Hello, thanks for messing us."
-    end
     render 'respond.xml.erb', :content_type => 'text/xml'
   end
 end
