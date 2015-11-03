@@ -1,6 +1,6 @@
 <h1>Editing User</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%# Fix code below... currently broken %>
+<%= link_to 'Show', store_user_path(@user) %> |
+<%= link_to 'Back', store_users_path(@store) %>

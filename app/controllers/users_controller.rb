@@ -14,7 +14,9 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+  #  @user = User.new
+  @store = Store.find(params[:store_id])
+  @user = @store.users.new
   end
 
   # GET /users/1/edit
@@ -24,12 +26,13 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @store = Store.find(params[:store_id])
+    @user = @store.users.new(user_params)
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to [@store, @user], notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: [@store, @user] }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -56,7 +59,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to store_users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,11 +67,12 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @store = Store.find(params[:store_id])
+      @user = @store.users.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :phone_number, :store_id, :integer)
+      params.require(:user).permit(:first_name, :last_name, :phone_number, :store_id)
     end
 end
