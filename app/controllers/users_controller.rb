@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to [@store, @user], notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     def set_store
       @store = Store.find(params[:store_id])
     end
-    
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = @store.users.find(params[:id])
