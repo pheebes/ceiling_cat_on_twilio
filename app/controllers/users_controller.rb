@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
+  before_action :set_store
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = @store.users.all
   end
 
   # GET /users/1
@@ -14,8 +17,6 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-  #  @user = User.new
-  @store = Store.find(params[:store_id])
   @user = @store.users.new
   end
 
@@ -26,8 +27,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @store = Store.find(params[:store_id])
-    @user = @store.users.new(user_params)
+    @user = @store.users.build(user_params)
 
     respond_to do |format|
       if @user.save
@@ -65,9 +65,13 @@ class UsersController < ApplicationController
   end
 
   private
+    # Set store that user/users will be associated to
+    def set_store
+      @store = Store.find(params[:store_id])
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @store = Store.find(params[:store_id])
       @user = @store.users.find(params[:id])
     end
 
