@@ -29,7 +29,7 @@ Please feel free to use a different markup language if you do not plan to run
 
 ---
 
-#### Using RVM
+=== Using RVM
 * cd into application directory
 * rvm gemset create gemset_name
 * rvm gemset use gemset_name
