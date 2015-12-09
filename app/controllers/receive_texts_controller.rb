@@ -11,7 +11,7 @@ class ReceiveTextsController < ApplicationController
   end
 
   def respond
-    @users = @store.users.all
+    puts params.inspect
     @zip = params[:FromZip]
     @body = params[:Body].to_s
     render 'respond.xml.erb', :content_type => 'text/xml'
@@ -20,7 +20,7 @@ class ReceiveTextsController < ApplicationController
   private
      # Set store so app will be able to find users associated to the store
     def set_store
-      @store = Store.find(1) #(params[:id])
+      @stores = Store.all 
     end
 
     # Set user which will be called before the respond action

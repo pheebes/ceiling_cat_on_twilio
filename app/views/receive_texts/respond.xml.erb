@@ -4,14 +4,14 @@
   <% elsif @body.downcase.include?('abracadabra') %>
     <Message>You found the magic word!</Message>
   <% else %>
-    <% @user = "not_found" %>
-    <% @users.each do |user| %>
-      <% @user = user if @body.include?(user.user_id) %>
+    <% @store = "not_found" %>
+    <% @stores.each do |store| %>
+      <% @store = store if @body.include?(store.id.to_s) %>
     <% end %>
-    <% if @user == "not_found" %>
-      <Message>Please send your user id with the text.  Thanks!</Message>
+    <% if @store == "not_found" %>
+      <Message>Please send your store id with the text.  Thanks!</Message>
     <% else %>
-      <Message>Hi <%= @user.first_name %> thanks for texting us from <%= @zip %>. Please click on the following link to access your employee information: <%= "https://ec8b440c.ngrok.io/stores/#{@user.store_id}/users/#{@user.id}" %></Message>
+      <Message>Hi person from <%= @store.store_name %>.  Thanks for texting us from <%= @zip %>. Please click on the following link to access your store information: <%= "https://ec8b440c.ngrok.io/stores/#{@store.id}" %> </Message>
     <% end %>
   <% end %>
 </Response>
