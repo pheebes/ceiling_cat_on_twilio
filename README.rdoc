@@ -35,7 +35,18 @@ Please feel free to use a different markup language if you do not plan to run
 * rvm gemset use gemset_name
 * bundle install
 
+---
+
 === Using ngrok
 * if ngrok is showing the command not found error message after downloading and unzipping the ngrok file you probably need to move ngrok into the usr/local/bin: mv ngrok /usr/local/bin 
 * start rails server: rails server p -3000
 * to set up an ngrok connection type: ngrok http 3000 
+
+---
+
+=== Using CURL to test out the send_receivers/send_text_message action:
+* curl -X POST [NGROK_LINK]/send_texts/send_text_message -u ACa21aa0103ef778766609f98133c64a91:[AUTH_TOKEN] -d ''
+* Replace [NGROK_LINK] with the ngrok link being used to run the application
+* Replace [AUTH_TOKEN] with your twilio authentication token
+* Unsure why but a data field is require or you will get a Length Required Error message.
+
