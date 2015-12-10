@@ -4,10 +4,10 @@ user_one:
   first_name: Ben
   last_name: Holms
   phone_number: 3422332222
-  store_id: store_one
+  store_id: store_one.id
 
 user_two:
   first_name: Derek
   last_name: Shaw
   phone_number: 1231231555
-  store_id: store_two
+  store_id: store_two.id
