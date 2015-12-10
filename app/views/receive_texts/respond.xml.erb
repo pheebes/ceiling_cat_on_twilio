@@ -1,6 +1,6 @@
 <Response>
   <% if @body.downcase.include?('help me')%>
-    <Message>Please dial 911 immediately.</Message>
+    <Message>If this is an emergency, please dial 911 immediately.</Message>
   <% elsif @body.downcase.include?('abracadabra') %>
     <Message>You found the magic word!</Message>
   <% else %>
@@ -11,7 +11,7 @@
     <% if @store == "not_found" %>
       <Message>Please send your store id with the text.  Thanks!</Message>
     <% else %>
-      <Message>Hi person from <%= @store.store_name %>.  Thanks for texting us from <%= @zip %>. Please click on the following link to access your store information: <%= "https://ec8b440c.ngrok.io/stores/#{@store.id}" %> </Message>
+      <Message>Hi person from <%= @store.store_name %>.  Thanks for texting us from <%= @zip %>. Please click on the following link to access your store information: <%= "#{ENV['NGROK_LINK']}/stores/#{@store.id}" %> </Message>
     <% end %>
   <% end %>
 </Response>

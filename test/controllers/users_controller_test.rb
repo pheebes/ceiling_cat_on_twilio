@@ -2,17 +2,17 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   setup do
-    @user = users(:one)
+    @user = users(:user_one)
   end
 
   test "should get index" do
-    get :index
+    get :index, store_id: @user.store_id
     assert_response :success
     assert_not_nil assigns(:users)
   end
 
   test "should get new" do
-    get :new
+    get :new, store_id: @user.store_id
     assert_response :success
   end
 
@@ -21,11 +21,11 @@ class UsersControllerTest < ActionController::TestCase
       post :create, user: { first_name: @user.first_name, last_name: @user.last_name, phone_number: @user.phone_number, store_id: @user.store_id }
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to store_user_path(assigns(:user))
   end
 
   test "should show user" do
-    get :show, id: @user
+    get :show, id: @user, store_id: @user
     assert_response :success
   end
 
@@ -36,7 +36,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should update user" do
     patch :update, id: @user, user: { first_name: @user.first_name, last_name: @user.last_name, phone_number: @user.phone_number, store_id: @user.store_id }
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to store_user_path(assigns(:user))
   end
 
   test "should destroy user" do
@@ -44,6 +44,6 @@ class UsersControllerTest < ActionController::TestCase
       delete :destroy, id: @user
     end
 
-    assert_redirected_to users_path
+    assert_redirected_to store_users_path
   end
 end

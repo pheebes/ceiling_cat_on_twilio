@@ -2,7 +2,7 @@ require 'test_helper'
 
 class StoresControllerTest < ActionController::TestCase
   setup do
-    @store = stores(:one)
+    @store = stores(:store_one)
   end
 
   test "should get index" do

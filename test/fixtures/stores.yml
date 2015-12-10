@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  store_name: MyString
-  store_phone: MyString
-  store_zip: MyString
+store_one:
+  store_name: Wally World
+  store_phone: 9993332222
+  store_zip: 55555
 
-two:
-  store_name: MyString
-  store_phone: MyString
-  store_zip: MyString
+store_two:
+  store_name: Wanda World
+  store_phone: 1112223333
+  store_zip: 44231

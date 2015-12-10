@@ -46,4 +46,6 @@ group :development, :test do
 
   # Set up secret ENV variables that the world should not have access to
   gem 'dotenv-rails'
+  
+  gem 'rspec-rails', '~> 3.0'
 end

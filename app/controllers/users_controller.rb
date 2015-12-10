@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   private
     # Set store that user/users will be associated to
     def set_store
-      @store = Store.find(params[:store_id])
+      @store = Store.find(params[:store_id]) 
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -76,6 +76,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :phone_number, :store_id)
+      params.require(:user, :store_id).permit(:first_name, :last_name, :phone_number)
     end
 end
